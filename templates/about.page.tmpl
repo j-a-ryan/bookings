@@ -1,0 +1,23 @@
+{{template "base" .}}
+
+{{define "content"}}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>This is the about page</h1>
+            <p>This is some text.</p>
+            
+            <!-- We want something that is indexed, namely all the data (.) 
+                in StringMap and the index "test" value in particular -->
+            <p>This came from the template: {{index .StringMap "test"}}</p>
+            <p>
+                {{if ne (index .StringMap "remote_ip") ""}}
+                    Your IP address is {{index .StringMap "remote_ip"}}
+                {{else}}
+                    Failed to retrieve IP address. Visit <a href="/">Home Page</a>, so it can be loaded, please.
+                {{end}}
+            </p>
+        </div>
+    </div>
+</div>
+{{end}}
