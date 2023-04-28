@@ -29,5 +29,10 @@ func routes(app *config.AppConfig) http.Handler { // Returns a MUX (multiplexer)
 	mux.Get("/", handlers.Repo.Home)
 	mux.Get("/about", handlers.Repo.About)
 
+	// File server for static files
+	// Mux will handle calls to the /static folder using the server.
+	fileServer := http.FileServer(http.Dir("./static"))
+	mux.Handle("/static/*", http.StripPrefix("/static", fileServer))
+
 	return mux
 }
