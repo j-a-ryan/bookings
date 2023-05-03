@@ -1,0 +1,48 @@
+{{template "base" .}}
+
+{{define "content"}}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <img src="../static/images/ace2.jpg" class="image-fluid img-thumbnail room-image mx-auto d-block"
+                alt="room image">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center mt-4">Ace</h1>
+            <p>This is are list of hotel rooms for you to stay at. Alot of them are pretty good. I'd
+                stay at Kenny's or Ace. They're pretty good. Go see are town while you're here. It's pretty good.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <a id="check-availability-button" href="#!" class="btn btn-success">Check Availability</a>
+        </div>
+    </div>
+</div>
+{{end}}
+{{block "js" .}}
+<script>
+    document.getElementById("check-availability-button").addEventListener("click", function () {
+        let html = `
+            <form id="check-availability-form" action="" method="POST" novalidate class="needs-validation">
+                <div class="row swal-dates-narrow">
+                    <div class="col">
+                        <div class="row" id="reservation-dates-modal">
+                            <div class="col">
+                                <input required disabled class="form-control" type="text" name="start" id="start" placeholder="Arrival">
+                            </div>
+                            <div class="col">
+                                <input required  disabled class="form-control" type="text" name="end" id="end" placeholder="Departure">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            `
+        attention.custom({ msg: html, title: "Choose your dates" });
+    });
+</script>
+{{end}}

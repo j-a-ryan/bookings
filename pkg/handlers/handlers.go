@@ -37,14 +37,30 @@ func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
 
 // About produces the about page. Has a Repository receiver.
 func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "about.page.tmpl", &models.TemplateData{})
+}
 
-	// Dummy test
-	stringMap := make(map[string]string)
-	stringMap["test"] = "Hello again."
+// Reservation renders the make a reservation page and displays form
+func (m *Repository) Reservation(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "make-reservation.page.tmpl", &models.TemplateData{})
+}
 
-	remoteIP := m.App.Session.GetString(r.Context(), "remote_ip")
-	stringMap["remote_ip"] = remoteIP
-	render.RenderTemplate(w, "about.page.tmpl", &models.TemplateData{
-		StringMap: stringMap,
-	})
+// Kennys renders the room page
+func (m *Repository) Kennys(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "kennys.page.tmpl", &models.TemplateData{})
+}
+
+// Ace renders the room page
+func (m *Repository) Ace(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "ace.page.tmpl", &models.TemplateData{})
+}
+
+// Availability renders the search availability page
+func (m *Repository) Availability(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "search-availability.page.tmpl", &models.TemplateData{})
+}
+
+// Contact renders the contact page
+func (m *Repository) Contact(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "contact.page.tmpl", &models.TemplateData{})
 }
